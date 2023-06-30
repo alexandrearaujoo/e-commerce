@@ -1,10 +1,11 @@
 import { Inter } from 'next/font/google';
 import NextJsTopLoader from 'nextjs-toploader';
+import { Toaster } from 'react-hot-toast';
 
+import ModalProvider from '@/providers/ModalProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
-import ModalProvider from '@/providers/ModalProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -24,6 +25,7 @@ export default function RootLayout({
         <body className={inter.className}>
           <NextJsTopLoader />
           <ModalProvider />
+          <Toaster position="bottom-right" />
           {children}
         </body>
       </html>

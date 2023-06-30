@@ -19,7 +19,7 @@ const StoreModal = () => {
   const isOpen = useModalStore((state) => state.isOpen);
   const onClose = useModalStore((state) => state.onClose);
 
-  const { modalForm, onSubmit } = useModalForm();
+  const { modalForm, onSubmit, handleSubmit, isSubmitting } = useModalForm();
 
   return (
     <Modal
@@ -31,7 +31,7 @@ const StoreModal = () => {
       <section>
         <article className="space-y-4 py-2 pb-4">
           <Form {...modalForm}>
-            <form onSubmit={modalForm.handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit)}>
               <FormField
                 control={modalForm.control}
                 name="name"
@@ -39,17 +39,27 @@ const StoreModal = () => {
                   <FormItem>
                     <FormLabel>Name</FormLabel>
                     <FormControl>
-                      <Input placeholder="E-Commerce" {...field} />
+                      <Input
+                        placeholder="E-Commerce"
+                        {...field}
+                        disabled={isSubmitting}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
               <article className="flex w-full items-center justify-end space-x-2 pt-6">
-                <Button variant="outline" onClick={onClose}>
+                <Button
+                  variant="outline"
+                  onClick={onClose}
+                  disabled={isSubmitting}
+                >
                   Cancel
                 </Button>
-                <Button type="submit">Continue</Button>
+                <Button type="submit" disabled={isSubmitting}>
+                  Continue
+                </Button>
               </article>
             </form>
           </Form>
