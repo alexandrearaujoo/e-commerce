@@ -4,6 +4,7 @@ import NextJsTopLoader from 'nextjs-toploader';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
+import ModalProvider from '@/providers/ModalProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,6 +23,7 @@ export default function RootLayout({
       <html lang="en">
         <body className={inter.className}>
           <NextJsTopLoader />
+          <ModalProvider />
           {children}
         </body>
       </html>
