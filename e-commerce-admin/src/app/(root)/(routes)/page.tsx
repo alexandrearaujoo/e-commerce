@@ -3,7 +3,6 @@
 import { useEffect } from 'react';
 
 import { useModalStore } from '@/hooks/useModalStore';
-import { UserButton } from '@clerk/nextjs';
 
 export default function Home() {
   const isOpen = useModalStore((state) => state.isOpen);
@@ -13,9 +12,5 @@ export default function Home() {
     if (!isOpen) onOpen();
   }, [isOpen, onOpen]);
 
-  return (
-    <main>
-      <UserButton afterSignOutUrl="/" />
-    </main>
-  );
+  return null;
 }

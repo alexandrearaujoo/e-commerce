@@ -3,7 +3,7 @@ import { toast } from 'react-hot-toast';
 
 import { FormValues, formSchema } from '@/schemas/formSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import axios, { Axios, AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios';
 
 export const useModalForm = () => {
   const modalForm = useForm<FormValues>({
@@ -18,8 +18,8 @@ export const useModalForm = () => {
 
   const onSubmit = async (data: FormValues) => {
     try {
-      await axios.post('/api/stores', data);
-      toast.success('Store created successfully!');
+      const { data: store } = await axios.post('/api/stores', data);
+      window.location.assign(`/${store.id}`);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
