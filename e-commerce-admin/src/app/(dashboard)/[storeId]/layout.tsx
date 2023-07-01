@@ -1,6 +1,8 @@
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
+import Header from '@/components/header';
+
 import { getStore } from '@/services/getStore';
 import { auth } from '@clerk/nextjs';
 
@@ -22,7 +24,7 @@ export default async function DashboardLayout({
 
   return (
     <main>
-      This will be nav bar
+      <Header />
       {children}
     </main>
   );
