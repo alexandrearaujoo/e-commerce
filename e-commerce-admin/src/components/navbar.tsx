@@ -10,8 +10,8 @@ const NavBar = ({ className }: HTMLAttributes<HTMLElement>) => {
   const { routes } = useRoutes();
 
   return (
-    <nav className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
-      <ul>
+    <nav>
+      <ul className={cn('flex items-center space-x-4 lg:space-x-6', className)}>
         {routes.map(({ active, href, id, label }) => (
           <li key={id}>
             <Link
