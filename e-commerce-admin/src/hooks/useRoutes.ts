@@ -9,13 +9,19 @@ export const useRoutes = () => {
       id: 1,
       href: `/${params.storeId}`,
       label: 'Overview',
-      active: pathname === `/${params.storeId}`
+      active: pathname.includes('/')
+    },
+    {
+      id: 2,
+      href: `/${params.storeId}/billboards`,
+      label: 'Billboard',
+      active: pathname.includes('billboards')
     },
     {
       id: 2,
       href: `/${params.storeId}/settings`,
       label: 'Settings',
-      active: pathname === `/${params.storeId}/settings`
+      active: pathname.includes('settings')
     }
   ];
 
