@@ -2,7 +2,6 @@
 
 import dynamic from 'next/dynamic';
 
-import ApiAlert from '@/components/ui/api-alert';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -18,7 +17,6 @@ import { Input } from '@/components/ui/input';
 import { Separator } from '@/components/ui/separator';
 
 import { useBillboardForm } from '@/hooks/useBillboardForm';
-import { useOrigin } from '@/hooks/useOrigin';
 import { Billboard } from '@prisma/client';
 import { Trash } from 'lucide-react';
 
@@ -45,8 +43,6 @@ const BillboardForm = ({ initialValues }: BillboardFormProps) => {
     description,
     title
   } = useBillboardForm(initialValues);
-
-  const origin = useOrigin();
 
   return (
     <>
@@ -116,7 +112,6 @@ const BillboardForm = ({ initialValues }: BillboardFormProps) => {
           </Button>
         </form>
       </Form>
-      <Separator />
     </>
   );
 };
