@@ -12,13 +12,16 @@ interface ActionsMessages {
 const textMap: Record<ActionsMessages['message'], string> = {
   categories: 'Make sure you removed all products using this categories first!',
   sizes: 'Make sure you removed all prodcuts using this sizes first!',
-  billboards: 'Make sure you removed all categories using this billboard first!'
+  billboards:
+    'Make sure you removed all categories using this billboard first!',
+  colors: 'Make sure you removed all prodcuts using this color first!'
 };
 
 const successMessageMap: Record<ActionsMessages['success'], string> = {
   categories: 'Category deleted!',
   sizes: 'Size deleted!',
-  billboards: 'Billboard deleted!'
+  billboards: 'Billboard deleted!',
+  colors: 'Color deleted!'
 };
 
 export const useCellAction = ({

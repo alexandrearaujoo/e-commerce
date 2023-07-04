@@ -8,11 +8,11 @@ import { DataTable } from '@/components/ui/data-table';
 import Heading from '@/components/ui/heading';
 import { Separator } from '@/components/ui/separator';
 
-import { SizeColumn, columns } from './columns';
+import { ColorColumn, columns } from './columns';
 
 import { Plus } from 'lucide-react';
 
-const SizeClient = ({ sizes }: { sizes: SizeColumn[] }) => {
+const ColorClient = ({ colors }: { colors: ColorColumn[] }) => {
   const router = useRouter();
   const params = useParams();
 
@@ -20,21 +20,21 @@ const SizeClient = ({ sizes }: { sizes: SizeColumn[] }) => {
     <>
       <article className="flex items-center justify-between">
         <Heading
-          description="Manage sizes for your store"
-          title={`Sizes ${sizes.length}`}
+          description="Manage colors for your store"
+          title={`Colors ${colors.length}`}
         />
-        <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
+        <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
           <Plus className="mr-2 h-4 w-4" />
           Add new
         </Button>
       </article>
       <Separator />
-      <DataTable columns={columns} data={sizes} searchKey="name" />
-      <Heading title="API" description="API calls for sizes" />
+      <DataTable columns={columns} data={colors} searchKey="name" />
+      <Heading title="API" description="API calls for colors" />
       <Separator />
-      <ApiList entityIdName="sizeId" entityName="sizes" />
+      <ApiList entityIdName="colorId" entityName="colors" />
     </>
   );
 };
 
-export default SizeClient;
+export default ColorClient;
