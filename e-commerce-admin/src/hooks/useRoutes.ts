@@ -18,7 +18,13 @@ export const useRoutes = () => {
       active: pathname.includes('billboards')
     },
     {
-      id: 2,
+      id: 3,
+      href: `/${params.storeId}/categories`,
+      label: 'Categories',
+      active: pathname.includes('categories')
+    },
+    {
+      id: 4,
       href: `/${params.storeId}/settings`,
       label: 'Settings',
       active: pathname.includes('settings')

@@ -4,7 +4,13 @@ import toast from 'react-hot-toast';
 
 import axios, { AxiosError } from 'axios';
 
-export const useCellAction = (billboardId: string) => {
+export const useCellAction = ({
+  id,
+  actionLabel
+}: {
+  id: string;
+  actionLabel: string;
+}) => {
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
 
@@ -16,19 +22,27 @@ export const useCellAction = (billboardId: string) => {
     toast.success('ID copied to clipboard!');
   };
 
+  const messageError =
+    actionLabel === 'Category'
+      ? 'Make sure you removed all products using this categories first!'
+      : 'Make sure you removed all categories using this billboard first!';
+
+  const messageSuccess =
+    actionLabel === 'categories' ? 'Category deleted!' : 'Billboard deleted!';
+
   const onDelete = async () => {
     try {
       setLoading(true);
-      await axios.delete(`/api/${params.storeId}/billboards/${billboardId}`);
+      await axios.delete(
+        `/api/${params.storeId}/${actionLabel.toLocaleLowerCase()}/${id}`
+      );
       router.refresh();
-      toast.success('Billboard deleted!');
+      toast.success(messageSuccess);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
       }
-      toast.error(
-        'Make sure you removed all categories using this billboard first!'
-      );
+      toast.error(messageError);
     } finally {
       setLoading(false);
       setOpen(false);

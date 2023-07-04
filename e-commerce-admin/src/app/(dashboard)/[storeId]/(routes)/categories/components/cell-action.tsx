@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger
 } from '@/components/ui/dropdown-menu';
 
-import { BillboardColumn } from './columns';
+import { CategoryColumn } from './columns';
 
 import { useCellAction } from '@/hooks/useCellAction';
 import { Copy, Edit, MoreHorizontal, Trash } from 'lucide-react';
@@ -22,14 +22,14 @@ const AlertModal = dynamic(() => import('@/components/modals/alert-modal'), {
 });
 
 interface CellActionProps {
-  billboard: BillboardColumn;
+  category: CategoryColumn;
 }
 
-const CellAction = ({ billboard }: CellActionProps) => {
+const CellAction = ({ category }: CellActionProps) => {
   const router = useRouter();
   const { loading, onCopy, onDelete, open, storeId, setOpen } = useCellAction({
-    actionLabel: 'billboards',
-    id: billboard.id
+    actionLabel: 'categories',
+    id: category.id
   });
 
   return (
@@ -52,7 +52,7 @@ const CellAction = ({ billboard }: CellActionProps) => {
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Actions</DropdownMenuLabel>
           <DropdownMenuItem
-            onClick={() => onCopy(billboard.id)}
+            onClick={() => onCopy(category.id)}
             className="cursor-pointer"
           >
             <Copy className="mr-2 h-4 w-4" />
@@ -60,9 +60,7 @@ const CellAction = ({ billboard }: CellActionProps) => {
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
-            onClick={() =>
-              router.push(`/${storeId}/billboards/${billboard.id}`)
-            }
+            onClick={() => router.push(`/${storeId}/categories/${category.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
             Update
