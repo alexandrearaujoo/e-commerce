@@ -9,13 +9,14 @@ datasource db {
 }
 
 model Store {
-  id        String      @id @default(uuid())
-  name      String
-  userId    String
-  createdAt DateTime    @default(now()) @map("created_at")
-  updatedAd DateTime    @updatedAt @map("updated_at")
-  billboard Billboard[] @relation("storeToBillboard")
-  category  Category[]  @relation("storeToCategory")
+  id         String      @id @default(uuid())
+  name       String
+  userId     String
+  createdAt  DateTime    @default(now()) @map("created_at")
+  updatedAd  DateTime    @updatedAt @map("updated_at")
+  billboards Billboard[] @relation("storeToBillboard")
+  categorys  Category[]  @relation("storeToCategory")
+  sizes      Size[]      @relation("storeToSizes")
 }
 
 model Billboard {
@@ -26,7 +27,7 @@ model Billboard {
   imgUrl    String
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAd DateTime   @updatedAt @map("updated_at")
-  category  Category[] @relation("billboardToCategory")
+  categorys Category[] @relation("billboardToCategory")
 
   @@index([storeId])
 }
@@ -43,4 +44,16 @@ model Category {
 
   @@index([storeId])
   @@index([billboardId])
+}
+
+model Size {
+  id        String   @id @default(uuid())
+  store     Store    @relation("storeToSizes", fields: [storeId], references: [id])
+  storeId   String
+  name      String
+  value     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAd DateTime @updatedAt @map("updated_at")
+
+  @@index([storeId])
 }

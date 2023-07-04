@@ -25,6 +25,12 @@ export const useRoutes = () => {
     },
     {
       id: 4,
+      href: `/${params.storeId}/sizes`,
+      label: 'Sizes',
+      active: pathname.includes('sizes')
+    },
+    {
+      id: 5,
       href: `/${params.storeId}/settings`,
       label: 'Settings',
       active: pathname.includes('settings')

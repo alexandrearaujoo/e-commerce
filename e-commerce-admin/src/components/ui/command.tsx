@@ -1,6 +1,11 @@
 'use client';
 
-import { ComponentPropsWithoutRef, ElementRef, HTMLAttributes, forwardRef } from 'react';
+import {
+  ComponentPropsWithoutRef,
+  ElementRef,
+  HTMLAttributes,
+  forwardRef
+} from 'react';
 
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 

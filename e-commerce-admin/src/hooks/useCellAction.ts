@@ -4,6 +4,23 @@ import toast from 'react-hot-toast';
 
 import axios, { AxiosError } from 'axios';
 
+interface ActionsMessages {
+  message: string;
+  success: string;
+}
+
+const textMap: Record<ActionsMessages['message'], string> = {
+  categories: 'Make sure you removed all products using this categories first!',
+  sizes: 'Make sure you removed all prodcuts using this sizes first!',
+  billboards: 'Make sure you removed all categories using this billboard first!'
+};
+
+const successMessageMap: Record<ActionsMessages['success'], string> = {
+  categories: 'Category deleted!',
+  sizes: 'Size deleted!',
+  billboards: 'Billboard deleted!'
+};
+
 export const useCellAction = ({
   id,
   actionLabel
@@ -22,14 +39,6 @@ export const useCellAction = ({
     toast.success('ID copied to clipboard!');
   };
 
-  const messageError =
-    actionLabel === 'Category'
-      ? 'Make sure you removed all products using this categories first!'
-      : 'Make sure you removed all categories using this billboard first!';
-
-  const messageSuccess =
-    actionLabel === 'categories' ? 'Category deleted!' : 'Billboard deleted!';
-
   const onDelete = async () => {
     try {
       setLoading(true);
@@ -37,12 +46,12 @@ export const useCellAction = ({
         `/api/${params.storeId}/${actionLabel.toLocaleLowerCase()}/${id}`
       );
       router.refresh();
-      toast.success(messageSuccess);
+      toast.success(successMessageMap[actionLabel]);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
       }
-      toast.error(messageError);
+      toast.error(textMap[actionLabel]);
     } finally {
       setLoading(false);
       setOpen(false);
