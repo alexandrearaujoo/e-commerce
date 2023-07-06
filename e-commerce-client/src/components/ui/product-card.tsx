@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 
 import Currency from './currency';
 import IconButton from './icon-button';
@@ -8,7 +9,10 @@ import { Expand, ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product }: { product: Product }) => {
   return (
-    <div className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3">
+    <Link
+      href={`/product/${product.id}`}
+      className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3"
+    >
       <figure className="relative aspect-square rounded-xl bg-gray-100">
         <Image
           src={product?.images?.[0]?.url}
@@ -32,7 +36,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       <section className="flex items-center justify-between">
         <Currency value={product.price} />
       </section>
-    </div>
+    </Link>
   );
 };
 
