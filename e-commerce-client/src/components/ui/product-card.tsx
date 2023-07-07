@@ -1,16 +1,28 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { MouseEventHandler } from 'react';
 
 import Currency from './currency';
 import IconButton from './icon-button';
 
+import { usePreviewModal } from '@/hooks/usePreviewModal';
 import { Product } from '@/interfaces';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product }: { product: Product }) => {
+  const router = useRouter();
+  const onOpen = usePreviewModal((state) => state.onOpen);
+  const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    onOpen(product);
+  };
+
   return (
-    <Link
-      href={`/product/${product.id}`}
+    <div
+      onClick={() => router.push(`/product/${product.id}`)}
       className="group cursor-pointer space-y-4 rounded-xl border bg-white p-3"
     >
       <figure className="relative aspect-square rounded-xl bg-gray-100">
@@ -22,7 +34,10 @@ const ProductCard = ({ product }: { product: Product }) => {
         />
         <div className="absolute bottom-5 w-full px-6 opacity-0 transition-opacity duration-200 group-hover:opacity-100">
           <div className="flex justify-center gap-x-6">
-            <IconButton icon={<Expand size={20} className="text-gray-600" />} />
+            <IconButton
+              icon={<Expand size={20} className="text-gray-600" />}
+              onClick={onPreview}
+            />
             <IconButton
               icon={<ShoppingCart size={20} className="text-gray-600" />}
             />
@@ -36,7 +51,7 @@ const ProductCard = ({ product }: { product: Product }) => {
       <section className="flex items-center justify-between">
         <Currency value={product.price} />
       </section>
-    </Link>
+    </div>
   );
 };
 

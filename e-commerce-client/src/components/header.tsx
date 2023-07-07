@@ -1,10 +1,10 @@
 import Link from 'next/link';
 
 import Navbar from './navbar';
+import NavBarActions from './navbar-actions';
 import Container from './ui/container';
 
 import { getCategories } from '@/services/getCategories';
-import NavBarActions from './navbar-actions';
 
 export const revalidate = 0;
 

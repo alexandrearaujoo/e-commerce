@@ -6,7 +6,7 @@ export const useRouter = (data: Category[]) => {
   const pathname = usePathname();
 
   const routes = data.map((route) => ({
-    href: `/catergory/${route.id}`,
+    href: `/category/${route.id}`,
     label: route.name,
     active: pathname.includes(route.id)
   }));

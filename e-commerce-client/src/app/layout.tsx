@@ -5,6 +5,8 @@ import NextjsTopLoader from 'nextjs-toploader';
 import Footer from '@/components/footer';
 import Header from '@/components/header';
 
+import ModalProvider from '@/providers/modal-provider';
+
 const urbanist = Urbanist({ subsets: ['latin'] });
 
 export const metadata = {
@@ -21,6 +23,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={urbanist.className}>
         <NextjsTopLoader />
+        <ModalProvider />
         <Header />
         {children}
         <Footer />
