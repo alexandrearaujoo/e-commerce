@@ -5,7 +5,7 @@ import Currency from '@/components/ui/currency';
 
 import { useSummary } from '@/hooks/useSummary';
 
-const Summary = () => {
+const Summary = ({ isEmpty }: { isEmpty: boolean }) => {
   const { onCheckout, totalPrice } = useSummary();
 
   return (
@@ -17,7 +17,7 @@ const Summary = () => {
           <Currency value={totalPrice} />
         </div>
       </div>
-      <Button className="mt-6 w-full" onClick={onCheckout}>
+      <Button className="mt-6 w-full" onClick={onCheckout} disabled={isEmpty}>
         Checkout
       </Button>
     </section>
