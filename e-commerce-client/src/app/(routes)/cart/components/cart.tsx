@@ -10,7 +10,7 @@ const Cart = () => {
 
   return (
     <div className="mt-12 gap-x-12 lg:grid lg:grid-cols-12 lg:items-start">
-      <div className="lg:col-span-7">
+      <section className="lg:col-span-7">
         {items.length === 0 && (
           <p className="text-neutral-500">No items added to cart!</p>
         )}
@@ -19,7 +19,7 @@ const Cart = () => {
             <CartItem key={item.id} item={item} />
           ))}
         </ul>
-      </div>
+      </section>
       <Summary />
     </div>
   );

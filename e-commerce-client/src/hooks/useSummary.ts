@@ -17,7 +17,7 @@ export const useSummary = () => {
       return;
     }
 
-    if (!searchParams.get('canceled')) {
+    if (searchParams.get('canceled')) {
       toast.error('Payment canceled');
       return;
     }

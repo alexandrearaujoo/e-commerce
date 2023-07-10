@@ -22,21 +22,22 @@ const CartItem = ({ item }: CartItemProps) => {
         <Image
           fill
           src={item.images[0].url}
-          alt={item.name}
+          alt=""
           className="object-cover object-center"
         />
-        <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-          <div className="absolute right-0 top-0 z-10">
-            <IconButton
-              icon={<X size={15} />}
-              onClick={() => removeItem(item.id)}
-            />
+      </div>
+      <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
+        <div className="absolute right-0 top-0 z-10">
+          <IconButton
+            onClick={() => removeItem(item.id)}
+            icon={<X size={15} />}
+          />
+        </div>
+        <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
+          <div className="flex justify-between">
+            <p className=" text-lg font-semibold text-black">{item.name}</p>
           </div>
-          <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-            <div className="flex justify-between">
-              <p className="text-lg font-semibold text-black">{item.name}</p>
-            </div>
-          </div>
+
           <div className="mt-1 flex text-sm">
             <p className="text-gray-500">{item.color.name}</p>
             <p className="ml-4 border-l border-gray-200 pl-4 text-gray-500">

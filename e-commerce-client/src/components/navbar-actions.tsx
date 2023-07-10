@@ -9,7 +9,7 @@ import { ShoppingBag } from 'lucide-react';
 const NavBarActions = () => {
   const [isMounted, setIsMounted] = useState(false);
 
-  const { addItem, items, removeAll, removeItem } = useCartStore();
+  const items = useCartStore((state) => state.items);
 
   useEffect(() => {
     setIsMounted(true);
