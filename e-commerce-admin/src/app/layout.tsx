@@ -6,6 +6,7 @@ import ModalProvider from '@/providers/ModalProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
+import ThemeProvider from '@/providers/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -23,10 +24,12 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
-          <NextJsTopLoader />
-          <ModalProvider />
-          <Toaster position="bottom-right" />
-          {children}
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+            <NextJsTopLoader />
+            <ModalProvider />
+            <Toaster position="bottom-right" />
+            {children}
+          </ThemeProvider>
         </body>
       </html>
     </ClerkProvider>

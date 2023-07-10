@@ -2,6 +2,7 @@ import { redirect } from 'next/navigation';
 
 import NavBar from './navbar';
 import StoreSwithcer from './store-switcher';
+import ThemeToggle from './theme-toggle';
 
 import { getStores } from '@/services/getStores';
 import { UserButton, auth } from '@clerk/nextjs';
@@ -19,6 +20,7 @@ const Header = async () => {
         <StoreSwithcer items={stores} />
         <NavBar className="mx-6" />
         <article className="ml-auto flex items-center space-x-4">
+          <ThemeToggle />
           <UserButton afterSignOutUrl="/" />
         </article>
       </article>
