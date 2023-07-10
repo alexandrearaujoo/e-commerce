@@ -3,10 +3,10 @@ import NextJsTopLoader from 'nextjs-toploader';
 import { Toaster } from 'react-hot-toast';
 
 import ModalProvider from '@/providers/ModalProvider';
+import ThemeProvider from '@/providers/ThemeProvider';
 import { ClerkProvider } from '@clerk/nextjs';
 
 import './globals.css';
-import ThemeProvider from '@/providers/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
