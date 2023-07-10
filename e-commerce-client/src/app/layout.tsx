@@ -1,6 +1,7 @@
 import './globals.css';
 import { Urbanist } from 'next/font/google';
 import NextjsTopLoader from 'nextjs-toploader';
+import { Toaster } from 'react-hot-toast';
 
 import Footer from '@/components/footer';
 import Header from '@/components/header';
@@ -23,6 +24,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={urbanist.className}>
         <NextjsTopLoader />
+        <Toaster />
         <ModalProvider />
         <Header />
         {children}

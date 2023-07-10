@@ -1,7 +1,6 @@
 'use client';
 
 import Image from 'next/image';
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { MouseEventHandler } from 'react';
 
@@ -10,14 +9,23 @@ import IconButton from './icon-button';
 
 import { usePreviewModal } from '@/hooks/usePreviewModal';
 import { Product } from '@/interfaces';
+import { useCartStore } from '@/stores/cartStore';
 import { Expand, ShoppingCart } from 'lucide-react';
 
 const ProductCard = ({ product }: { product: Product }) => {
   const router = useRouter();
+  const addItem = useCartStore((state) => state.addItem);
+
   const onOpen = usePreviewModal((state) => state.onOpen);
+
   const onPreview: MouseEventHandler<HTMLButtonElement> = (e) => {
     e.stopPropagation();
     onOpen(product);
+  };
+
+  const onAddToCart: MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.stopPropagation();
+    addItem(product);
   };
 
   return (
@@ -40,6 +48,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             />
             <IconButton
               icon={<ShoppingCart size={20} className="text-gray-600" />}
+              onClick={onAddToCart}
             />
           </div>
         </div>
