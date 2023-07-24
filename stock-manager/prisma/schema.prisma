@@ -74,6 +74,7 @@ model Product {
   price      Decimal
   isFeatured Boolean     @default(false)
   isArchived Boolean     @default(false)
+  quantity   Int         @default(0)
   size       Size        @relation("sizeToProduct", fields: [sizeId], references: [id])
   sizeId     String
   color      Color       @relation("colorToProduct", fields: [colorId], references: [id])

@@ -92,7 +92,7 @@ const ProductForm = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Images</FormLabel>
+                <FormLabel>Imagens</FormLabel>
                 <FormControl>
                   <ImageUpload
                     onChange={(url) =>
@@ -117,11 +117,11 @@ const ProductForm = ({
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Product name"
+                      placeholder="Nome do produto"
                       {...field}
                     />
                   </FormControl>
@@ -134,7 +134,7 @@ const ProductForm = ({
               name="price"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Price</FormLabel>
+                  <FormLabel>Preço</FormLabel>
                   <FormControl>
                     <Input
                       type="number"
@@ -152,7 +152,7 @@ const ProductForm = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Categoria</FormLabel>
                   <FormControl>
                     <Select
                       disabled={isSubmitting}
@@ -164,7 +164,7 @@ const ProductForm = ({
                         <SelectTrigger>
                           <SelectValue
                             defaultValue={field.value}
-                            placeholder="Select a category..."
+                            placeholder="Selecione uma categoria..."
                           />
                         </SelectTrigger>
                       </FormControl>
@@ -186,7 +186,7 @@ const ProductForm = ({
               name="sizeId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Size</FormLabel>
+                  <FormLabel>Tamanho</FormLabel>
                   <FormControl>
                     <Select
                       disabled={isSubmitting}
@@ -198,7 +198,7 @@ const ProductForm = ({
                         <SelectTrigger>
                           <SelectValue
                             defaultValue={field.value}
-                            placeholder="Select a size..."
+                            placeholder="Selecione um tamanho..."
                           />
                         </SelectTrigger>
                       </FormControl>
@@ -220,7 +220,7 @@ const ProductForm = ({
               name="colorId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Color</FormLabel>
+                  <FormLabel>Cor</FormLabel>
                   <FormControl>
                     <Select
                       disabled={isSubmitting}
@@ -232,7 +232,7 @@ const ProductForm = ({
                         <SelectTrigger>
                           <SelectValue
                             defaultValue={field.value}
-                            placeholder="Select a color..."
+                            placeholder="Selecione uma cor..."
                           />
                         </SelectTrigger>
                       </FormControl>
@@ -251,6 +251,24 @@ const ProductForm = ({
             />
             <FormField
               control={control}
+              name="quantity"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Quantidade</FormLabel>
+                  <FormControl>
+                    <Input
+                      type="number"
+                      disabled={isSubmitting}
+                      placeholder="0"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+            <FormField
+              control={control}
               name="isFeatured"
               render={({ field }) => (
                 <FormItem className="flex items-start space-x-3 space-y-0 rounded-md border p-4">
@@ -262,9 +280,9 @@ const ProductForm = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Featured</FormLabel>
+                    <FormLabel>Disponivel</FormLabel>
                     <FormDescription>
-                      This product will appear on the homepage
+                      Este produto aparecerá na página inicial
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -283,9 +301,9 @@ const ProductForm = ({
                     />
                   </FormControl>
                   <div className="space-y-1 leading-none">
-                    <FormLabel>Archived</FormLabel>
+                    <FormLabel>Arquivado</FormLabel>
                     <FormDescription>
-                      This product will not appear anywhere in the store
+                      Este produto será arquivo após acabar o estoque
                     </FormDescription>
                   </div>
                 </FormItem>

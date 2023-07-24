@@ -21,6 +21,7 @@ export const useProductForm = (
           name: '',
           images: [],
           price: 0,
+          quantity: 0,
           categoryId: '',
           colorId: '',
           sizeId: '',
