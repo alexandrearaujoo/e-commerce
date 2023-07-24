@@ -14,8 +14,7 @@ export const useCategoryForm = (initialValues: Category | null) => {
   const categoryForm = useForm<CategoryRequest>({
     resolver: zodResolver(categorySchema),
     defaultValues: initialValues || {
-      name: '',
-      billboardId: ''
+      name: ''
     }
   });
   const [loading, setLoading] = useState(false);

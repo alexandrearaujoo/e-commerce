@@ -10,7 +10,7 @@ export async function POST(
   try {
     const { userId } = auth();
     const { storeId } = params;
-    const { name, billboardId } = await req.json();
+    const { name } = await req.json();
 
     if (!userId) {
       return new NextResponse('Unauthenticated', { status: 401 });
@@ -20,8 +20,8 @@ export async function POST(
       return new NextResponse('Store ID is required', { status: 400 });
     }
 
-    if (!name || !billboardId) {
-      return new NextResponse('Name and Billboard is required', {
+    if (!name) {
+      return new NextResponse('Name is required', {
         status: 400
       });
     }
@@ -35,7 +35,7 @@ export async function POST(
     }
 
     const category = await prisma.category.create({
-      data: { name, billboardId, storeId }
+      data: { name, storeId }
     });
 
     return NextResponse.json(category, { status: 201 });

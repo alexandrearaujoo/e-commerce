@@ -67,7 +67,7 @@ export default async function DashboardPage({
         </section>
         <Card className="col-span-4">
           <CardHeader>
-            <CardTitle>Visão</CardTitle>
+            <CardTitle>Visão Geral</CardTitle>
           </CardHeader>
           <CardContent className="pl-2">
             <Overview data={graphRevenue} />

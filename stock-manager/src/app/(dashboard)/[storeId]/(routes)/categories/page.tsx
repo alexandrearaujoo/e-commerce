@@ -13,7 +13,6 @@ export default async function CategoriesPage({
 
   const formattedCategories = categories.map((category) => ({
     ...category,
-    billboardLabel: category.billboard.label,
     createdAt: format(category.createdAt, 'MMMM do, yyyy')
   }));
 

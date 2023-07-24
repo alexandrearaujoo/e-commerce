@@ -14,8 +14,6 @@ const textMap: Record<ActionsMessages['message'], string> = {
     'Certifique-se de remover todos os produtos usando essas categorias primeiro!',
   sizes:
     'Certifique-se de remover todos os produtos usando esses tamanhos primeiro!',
-  billboards:
-    'Certifique-se de remover todas as categorias usando este painel!',
   colors:
     'Certifique-se de remover todos os produtos usando esta cor primeiro!',
   products: 'Algo deu errado!'
@@ -24,7 +22,6 @@ const textMap: Record<ActionsMessages['message'], string> = {
 const successMessageMap: Record<ActionsMessages['success'], string> = {
   categories: 'Categoria deletada!',
   sizes: 'Tamanho deletado!',
-  billboards: 'Painel deletado!',
   colors: 'Cor deletada!',
   products: 'Produto deletado!'
 };

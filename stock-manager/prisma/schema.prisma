@@ -9,48 +9,30 @@ datasource db {
 }
 
 model Store {
-  id         String      @id @default(uuid())
-  name       String
-  userId     String
-  createdAt  DateTime    @default(now()) @map("created_at")
-  updatedAd  DateTime    @updatedAt @map("updated_at")
-  billboards Billboard[] @relation("storeToBillboard")
-  categorys  Category[]  @relation("storeToCategory")
-  sizes      Size[]      @relation("storeToSizes")
-  colors     Color[]     @relation("storeToColors")
-  products   Product[]   @relation("storeToProduct")
-  orders     Order[]     @relation("storeToOrder")
+  id        String     @id @default(uuid())
+  name      String
+  userId    String
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAd DateTime   @updatedAt @map("updated_at")
+  categorys Category[] @relation("storeToCategory")
+  sizes     Size[]     @relation("storeToSizes")
+  colors    Color[]    @relation("storeToColors")
+  products  Product[]  @relation("storeToProduct")
+  orders    Order[]    @relation("storeToOrder")
 
   @@map("stores")
 }
 
-model Billboard {
-  id        String     @id @default(uuid())
-  store     Store      @relation("storeToBillboard", fields: [storeId], references: [id])
-  storeId   String
-  label     String
-  imgUrl    String
-  createdAt DateTime   @default(now()) @map("created_at")
-  updatedAd DateTime   @updatedAt @map("updated_at")
-  categorys Category[] @relation("billboardToCategory")
-
-  @@index([storeId])
-  @@map("billboards")
-}
-
 model Category {
-  id          String    @id @default(uuid())
-  store       Store     @relation("storeToCategory", fields: [storeId], references: [id])
-  storeId     String
-  billboard   Billboard @relation("billboardToCategory", fields: [billboardId], references: [id])
-  billboardId String
-  name        String
-  createdAt   DateTime  @default(now()) @map("created_at")
-  updatedAd   DateTime  @updatedAt @map("updated_at")
-  products    Product[] @relation("categoryToProduct")
+  id        String    @id @default(uuid())
+  store     Store     @relation("storeToCategory", fields: [storeId], references: [id])
+  storeId   String
+  name      String
+  createdAt DateTime  @default(now()) @map("created_at")
+  updatedAd DateTime  @updatedAt @map("updated_at")
+  products  Product[] @relation("categoryToProduct")
 
   @@index([storeId])
-  @@index([billboardId])
   @@map("categories")
 }
 
