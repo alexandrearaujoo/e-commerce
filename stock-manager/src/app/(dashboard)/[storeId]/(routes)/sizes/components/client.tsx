@@ -20,17 +20,17 @@ const SizeClient = ({ sizes }: { sizes: SizeColumn[] }) => {
     <>
       <article className="flex items-center justify-between">
         <Heading
-          description="Manage sizes for your store"
-          title={`Sizes ${sizes.length}`}
+          description="Gerenciar os tamanhos para sua loja"
+          title={`Tamanhos - ${sizes.length}`}
         />
         <Button onClick={() => router.push(`/${params.storeId}/sizes/new`)}>
           <Plus className="mr-2 h-4 w-4" />
-          Add new
+          Adicionar
         </Button>
       </article>
       <Separator />
       <DataTable columns={columns} data={sizes} searchKey="name" />
-      <Heading title="API" description="API calls for sizes" />
+      <Heading title="API" description="Chamadas de API para tamanhos" />
       <Separator />
       <ApiList entityIdName="sizeId" entityName="sizes" />
     </>

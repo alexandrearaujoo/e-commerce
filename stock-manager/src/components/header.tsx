@@ -4,7 +4,7 @@ import NavBar from './navbar';
 import StoreSwithcer from './store-switcher';
 import ThemeToggle from './theme-toggle';
 
-import { getStores } from '@/services/getStores';
+import { getStores } from '@/services/stores';
 import { UserButton, auth } from '@clerk/nextjs';
 
 const Header = async () => {

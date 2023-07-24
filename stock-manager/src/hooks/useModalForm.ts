@@ -23,8 +23,9 @@ export const useModalForm = () => {
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
     }
   };
 

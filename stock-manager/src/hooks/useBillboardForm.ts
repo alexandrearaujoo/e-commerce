@@ -22,15 +22,13 @@ export const useBillboardForm = (initialValues: Billboard | null) => {
 
   const [open, setOpen] = useState(false);
 
-  const title = initialValues ? 'Edit Billboard' : 'Create Billboard';
+  const title = initialValues ? 'Editar Painel' : 'Criar Painel';
   const description = initialValues
-    ? 'Edit a Billboard'
-    : 'Add a new Billboard';
-  const toastMessage = initialValues
-    ? 'Billboard updated!'
-    : 'Billboard created!';
+    ? 'Editar um Painel'
+    : 'Adicionar um novo Painel';
+  const toastMessage = initialValues ? 'Painel atualizado!' : 'Painel criado!';
 
-  const action = initialValues ? 'Save changes' : 'Create';
+  const action = initialValues ? 'Salvar mudanças' : 'Criar';
 
   const {
     handleSubmit,
@@ -48,14 +46,17 @@ export const useBillboardForm = (initialValues: Billboard | null) => {
       } else {
         await axios.post(`/api/${params.storeId}/billboards`, data);
       }
-      router.refresh();
+
       router.push(`/${params.storeId}/billboards`);
       toast.success(toastMessage);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
+    } finally {
+      router.refresh();
     }
   };
 
@@ -65,17 +66,19 @@ export const useBillboardForm = (initialValues: Billboard | null) => {
       await axios.delete(
         `/api/${params.storeId}/billboards/${params.billboardId}`
       );
-      router.refresh();
+
       router.push(`/${params.storeId}/billboards`);
-      toast.success('Billboard deleted!');
+      toast.success('Painel deletado!');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
       toast.error(
-        'Make sure you removed all categories using this billboard first!'
+        'Certifique-se de remover todas as categorias usando este quadro de avisos primeiro!'
       );
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

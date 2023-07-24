@@ -1,7 +1,7 @@
 import CategoryForm from './components/category-form';
 
-import { getBillboards } from '@/services/getBillboards';
-import { getCategory } from '@/services/getCategory';
+import { getBillboards } from '@/services/billboards';
+import { getCategory } from '@/services/categories';
 
 export default async function CategoryPage({
   params

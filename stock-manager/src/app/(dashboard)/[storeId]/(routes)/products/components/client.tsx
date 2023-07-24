@@ -20,17 +20,17 @@ const ProductClient = ({ products }: { products: ProductColumn[] }) => {
     <>
       <article className="flex items-center justify-between">
         <Heading
-          description="Manage products for your store"
-          title={`Products ${products.length}`}
+          description="Gerencie os produtos da sua loja"
+          title={`Produtos - ${products.length}`}
         />
         <Button onClick={() => router.push(`/${params.storeId}/products/new`)}>
           <Plus className="mr-2 h-4 w-4" />
-          Add new
+          Adicionar
         </Button>
       </article>
       <Separator />
       <DataTable columns={columns} data={products} searchKey="name" />
-      <Heading title="API" description="API calls for products" />
+      <Heading title="API" description="Chamadas de API para produtos" />
       <Separator />
       <ApiList entityIdName="productId" entityName="products" />
     </>

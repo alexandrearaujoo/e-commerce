@@ -56,7 +56,10 @@ const SettingsForm = ({ initialValues }: SettingsFormProps) => {
         />
       )}
       <article className="flex items-center justify-between">
-        <Heading title="Settings" description="Manage store preferences" />
+        <Heading
+          title="Configurações"
+          description="Gerencie as preferências da loja"
+        />
         <Button
           variant="destructive"
           size="icon"
@@ -75,11 +78,11 @@ const SettingsForm = ({ initialValues }: SettingsFormProps) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Store name"
+                      placeholder="Nome da loja"
                       {...field}
                     />
                   </FormControl>
@@ -89,7 +92,7 @@ const SettingsForm = ({ initialValues }: SettingsFormProps) => {
             />
           </section>
           <Button disabled={isSubmitting} type="submit" className="ml-auto">
-            Save changes
+            Salvar mudanças
           </Button>
         </form>
       </Form>

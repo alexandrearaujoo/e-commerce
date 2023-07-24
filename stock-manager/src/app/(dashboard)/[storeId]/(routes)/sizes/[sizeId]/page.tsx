@@ -1,6 +1,6 @@
 import SizeForm from './components/size-form';
 
-import { getSize } from '@/services/getSize';
+import { getSize } from '@/services/sizes';
 
 export default async function SizePage({
   params

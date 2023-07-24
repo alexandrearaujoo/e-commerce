@@ -10,3 +10,15 @@ export const getBillboards = async ({ storeId }: { storeId: string }) => {
 
   return billboards;
 };
+
+export const getBillboard = async ({
+  billboardId
+}: {
+  billboardId: string;
+}) => {
+  const billboard = await prisma.billboard.findUnique({
+    where: { id: billboardId }
+  });
+
+  return billboard;
+};

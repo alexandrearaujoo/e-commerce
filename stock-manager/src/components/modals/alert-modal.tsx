@@ -28,17 +28,17 @@ const AlertModal = ({
 
   return (
     <Modal
-      title="Are you sure ?"
-      description="This action cannot be undone!"
+      title="Tem certeza ?"
+      description="Essa ação não pode ser desfeita!"
       isOpen={isOpen}
       onClose={onClose}
     >
       <article className="flex w-full items-center justify-end space-x-2 pt-6">
         <Button disabled={loading} onClick={onClose} variant="outline">
-          Cancel
+          Cancelar
         </Button>
         <Button disabled={loading} onClick={onConfirm} variant="destructive">
-          Continue
+          Continuar
         </Button>
       </article>
     </Modal>

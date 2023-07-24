@@ -75,7 +75,7 @@ const BillboardForm = ({ initialValues }: BillboardFormProps) => {
             name="imgUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Background Image</FormLabel>
+                <FormLabel>Imagem de fundo</FormLabel>
                 <FormControl>
                   <ImageUpload
                     onChange={(url) => field.onChange(url)}
@@ -94,11 +94,11 @@ const BillboardForm = ({ initialValues }: BillboardFormProps) => {
               name="label"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Label</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Billboard label"
+                      placeholder="Nome do painel"
                       {...field}
                     />
                   </FormControl>

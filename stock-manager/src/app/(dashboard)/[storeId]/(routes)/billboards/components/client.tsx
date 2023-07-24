@@ -20,19 +20,19 @@ const BillboardClient = ({ billboards }: { billboards: BillboardColumn[] }) => {
     <>
       <article className="flex items-center justify-between">
         <Heading
-          description="Manage billdoards for your store"
-          title={`Billboards ${billboards.length}`}
+          description="Gerenciar painéis para sua loja"
+          title={`Painéis - ${billboards.length}`}
         />
         <Button
           onClick={() => router.push(`/${params.storeId}/billboards/new`)}
         >
           <Plus className="mr-2 h-4 w-4" />
-          Add new
+          Adicionar
         </Button>
       </article>
       <Separator />
       <DataTable columns={columns} data={billboards} searchKey="label" />
-      <Heading title="API" description="API calls for Billboards" />
+      <Heading title="API" description="Chamadas de API para painéis" />
       <Separator />
       <ApiList entityIdName="billboardId" entityName="billboards" />
     </>

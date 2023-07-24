@@ -1,6 +1,7 @@
 'use client';
 
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -75,11 +76,11 @@ const ColorForm = ({ initialValues }: ColorFormProps) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Color name"
+                      placeholder="Nome da cor"
                       {...field}
                     />
                   </FormControl>
@@ -92,18 +93,28 @@ const ColorForm = ({ initialValues }: ColorFormProps) => {
               name="value"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Value</FormLabel>
+                  <FormLabel>Hexadecimal</FormLabel>
                   <FormControl>
-                    <div className="flex items-center gap-x-4">
-                      <Input
-                        disabled={isSubmitting}
-                        placeholder="Color value"
-                        {...field}
-                      />
-                      <div
-                        className="rounded-full border p-4"
-                        style={{ backgroundColor: field.value }}
-                      />
+                    {/* https://htmlcolorcodes.com */}
+                    <div className="flex flex-col space-y-4">
+                      <div className="flex items-center gap-x-4">
+                        <Input
+                          disabled={isSubmitting}
+                          placeholder="Hexadecimal da cor"
+                          {...field}
+                        />
+                        <div
+                          className="rounded-full border p-4"
+                          style={{ backgroundColor: field.value }}
+                        />
+                      </div>
+                      <Link
+                        href="https://htmlcolorcodes.com"
+                        target="_blank"
+                        className="text-sm transition-opacity duration-200 hover:opacity-80"
+                      >
+                        Ver hexadecimais
+                      </Link>
                     </div>
                   </FormControl>
                   <FormMessage />

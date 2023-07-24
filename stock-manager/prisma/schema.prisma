@@ -20,6 +20,8 @@ model Store {
   colors     Color[]     @relation("storeToColors")
   products   Product[]   @relation("storeToProduct")
   orders     Order[]     @relation("storeToOrder")
+
+  @@map("stores")
 }
 
 model Billboard {
@@ -33,6 +35,7 @@ model Billboard {
   categorys Category[] @relation("billboardToCategory")
 
   @@index([storeId])
+  @@map("billboards")
 }
 
 model Category {
@@ -48,6 +51,7 @@ model Category {
 
   @@index([storeId])
   @@index([billboardId])
+  @@map("categories")
 }
 
 model Size {
@@ -61,6 +65,7 @@ model Size {
   products  Product[] @relation("sizeToProduct")
 
   @@index([storeId])
+  @@map("sizes")
 }
 
 model Color {
@@ -74,6 +79,7 @@ model Color {
   products  Product[] @relation("colorToProduct")
 
   @@index([storeId])
+  @@map("colors")
 }
 
 model Product {
@@ -93,12 +99,13 @@ model Product {
   images     Image[]     @relation("imageToProduct")
   createdAt  DateTime    @default(now()) @map("created_at")
   updatedAd  DateTime    @updatedAt @map("updated_at")
-  orderItems  OrderItem[] @relation("orderItemToProduct")
+  orderItems OrderItem[] @relation("orderItemToProduct")
 
   @@index([storeId])
   @@index([categoryId])
   @@index([sizeId])
   @@index([colorId])
+  @@map("products")
 }
 
 model Image {
@@ -110,6 +117,7 @@ model Image {
   updatedAd DateTime @updatedAt @map("updated_at")
 
   @@index([productId])
+  @@map("images")
 }
 
 model Order {
@@ -119,11 +127,12 @@ model Order {
   orderItems OrderItem[] @relation("orderItemToOrder")
   isPaid     Boolean     @default(false)
   phone      String      @default("")
-  address   String      @default("")
+  address    String      @default("")
   createdAt  DateTime    @default(now()) @map("created_at")
   updatedAd  DateTime    @updatedAt @map("updated_at")
 
   @@index([storeId])
+  @@map("orders")
 }
 
 model OrderItem {
@@ -135,4 +144,5 @@ model OrderItem {
 
   @@index([orderId])
   @@index([productId])
+  @@map("order_items")
 }

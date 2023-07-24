@@ -1,6 +1,6 @@
 import BillboardForm from './components/billboard-form';
 
-import { getBillboard } from '@/services/getBillboard';
+import { getBillboard } from '@/services/billboards';
 
 export default async function BillboardPage({
   params

@@ -10,20 +10,23 @@ interface ActionsMessages {
 }
 
 const textMap: Record<ActionsMessages['message'], string> = {
-  categories: 'Make sure you removed all products using this categories first!',
-  sizes: 'Make sure you removed all prodcuts using this sizes first!',
+  categories:
+    'Certifique-se de remover todos os produtos usando essas categorias primeiro!',
+  sizes:
+    'Certifique-se de remover todos os produtos usando esses tamanhos primeiro!',
   billboards:
-    'Make sure you removed all categories using this billboard first!',
-  colors: 'Make sure you removed all prodcuts using this color first!',
-  products: 'Something went wrong!'
+    'Certifique-se de remover todas as categorias usando este painel!',
+  colors:
+    'Certifique-se de remover todos os produtos usando esta cor primeiro!',
+  products: 'Algo deu errado!'
 };
 
 const successMessageMap: Record<ActionsMessages['success'], string> = {
-  categories: 'Category deleted!',
-  sizes: 'Size deleted!',
-  billboards: 'Billboard deleted!',
-  colors: 'Color deleted!',
-  products: 'Product deleted!'
+  categories: 'Categoria deletada!',
+  sizes: 'Tamanho deletado!',
+  billboards: 'Painel deletado!',
+  colors: 'Cor deletada!',
+  products: 'Produto deletado!'
 };
 
 export const useCellAction = ({
@@ -41,7 +44,7 @@ export const useCellAction = ({
 
   const onCopy = (id: string) => {
     navigator.clipboard.writeText(id);
-    toast.success('ID copied to clipboard!');
+    toast.success('ID copiado com sucesso');
   };
 
   const onDelete = async () => {
@@ -50,14 +53,16 @@ export const useCellAction = ({
       await axios.delete(
         `/api/${params.storeId}/${actionLabel.toLocaleLowerCase()}/${id}`
       );
-      router.refresh();
+
       toast.success(successMessageMap[actionLabel]);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
       toast.error(textMap[actionLabel]);
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

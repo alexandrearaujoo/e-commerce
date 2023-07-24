@@ -1,6 +1,6 @@
 import BillboardClient from './components/client';
 
-import { getBillboards } from '@/services/getBillboards';
+import { getBillboards } from '@/services/billboards';
 import { format } from 'date-fns';
 
 export default async function BillboardPage({

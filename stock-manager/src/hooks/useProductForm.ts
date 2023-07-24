@@ -32,11 +32,15 @@ export const useProductForm = (
 
   const [open, setOpen] = useState(false);
 
-  const title = initialValues ? 'Edit product' : 'Create product';
-  const description = initialValues ? 'Edit a product' : 'Add a new product';
-  const toastMessage = initialValues ? 'Product updated!' : 'Product created!';
+  const title = initialValues ? 'Editar produto' : 'Criar produto';
+  const description = initialValues
+    ? 'Editar um produto'
+    : 'Adicionar um novo produto';
+  const toastMessage = initialValues
+    ? 'Produto atualizado!'
+    : 'Produto criado!';
 
-  const action = initialValues ? 'Save changes' : 'Create';
+  const action = initialValues ? 'Salvar mudanças' : 'Criar';
 
   const {
     handleSubmit,
@@ -54,14 +58,17 @@ export const useProductForm = (
       } else {
         await axios.post(`/api/${params.storeId}/products`, data);
       }
-      router.refresh();
+
       router.push(`/${params.storeId}/products`);
       toast.success(toastMessage);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
+    } finally {
+      router.refresh();
     }
   };
 
@@ -69,15 +76,17 @@ export const useProductForm = (
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/products/${params.productId}`);
-      router.refresh();
+
       router.push(`/${params.storeId}/products`);
-      toast.success('Product deleted!');
+      toast.success('Produto deletado!');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

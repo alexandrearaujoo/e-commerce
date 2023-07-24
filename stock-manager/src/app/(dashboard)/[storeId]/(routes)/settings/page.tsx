@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation';
 
 import SettingsForm from './components/settings-form';
 
-import { getStore } from '@/services/getStore';
+import { getStore } from '@/services/stores';
 import { auth } from '@clerk/nextjs';
 
 export default async function SettingsPage({

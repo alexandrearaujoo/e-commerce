@@ -72,7 +72,7 @@ const ImageUpload = ({
               disabled={disabled}
             >
               <ImagePlus className="mr-2 h-4 w-4" />
-              Upload an image
+              Carregar uma imagem
             </Button>
           );
         }}

@@ -22,11 +22,13 @@ export const useColorForm = (initialValues: Color | null) => {
 
   const [open, setOpen] = useState(false);
 
-  const title = initialValues ? 'Edit color' : 'Create color';
-  const description = initialValues ? 'Edit a color' : 'Add a new color';
-  const toastMessage = initialValues ? 'Color updated!' : 'Color created!';
+  const title = initialValues ? 'Editar cor' : 'Criar cor';
+  const description = initialValues
+    ? 'Editar uma cor'
+    : 'Adicionar uma nova cor';
+  const toastMessage = initialValues ? 'Cor atualizada!' : 'Cor criada!';
 
-  const action = initialValues ? 'Save changes' : 'Create';
+  const action = initialValues ? 'Salvar mudanças' : 'Criar';
 
   const {
     handleSubmit,
@@ -44,14 +46,17 @@ export const useColorForm = (initialValues: Color | null) => {
       } else {
         await axios.post(`/api/${params.storeId}/colors`, data);
       }
-      router.refresh();
+
       router.push(`/${params.storeId}/colors`);
       toast.success(toastMessage);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
+    } finally {
+      router.refresh();
     }
   };
 
@@ -59,15 +64,19 @@ export const useColorForm = (initialValues: Color | null) => {
     try {
       setLoading(true);
       await axios.delete(`/api/${params.storeId}/colors/${params.colorId}`);
-      router.refresh();
+
       router.push(`/${params.storeId}/colors`);
       toast.success('Color deleted!');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Make sure you removed all products using this color first!');
+      toast.error(
+        'Certifique-se de remover todos os produtos usando esta cor primeiro!'
+      );
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

@@ -87,7 +87,7 @@ const StoreSwithcer = ({ items = [], className }: StoreSwithcerProps) => {
                 className="cursor-pointer"
               >
                 <PlusCircle className="mr-2 h-5 w-5" />
-                Create store
+                Criar loja
               </CommandItem>
             </CommandGroup>
           </CommandList>

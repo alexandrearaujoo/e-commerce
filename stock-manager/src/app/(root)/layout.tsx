@@ -1,7 +1,7 @@
 import { redirect } from 'next/navigation';
 import { ReactNode } from 'react';
 
-import { getStore } from '@/services/getStore';
+import { getStore } from '@/services/stores';
 import { auth } from '@clerk/nextjs';
 
 export default async function HomeLayout({

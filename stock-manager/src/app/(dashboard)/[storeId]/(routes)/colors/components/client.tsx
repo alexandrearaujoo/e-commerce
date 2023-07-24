@@ -20,17 +20,17 @@ const ColorClient = ({ colors }: { colors: ColorColumn[] }) => {
     <>
       <article className="flex items-center justify-between">
         <Heading
-          description="Manage colors for your store"
-          title={`Colors ${colors.length}`}
+          description="Gerenciar cores para sua loja"
+          title={`Cores - ${colors.length}`}
         />
         <Button onClick={() => router.push(`/${params.storeId}/colors/new`)}>
           <Plus className="mr-2 h-4 w-4" />
-          Add new
+          Adicionar
         </Button>
       </article>
       <Separator />
       <DataTable columns={columns} data={colors} searchKey="name" />
-      <Heading title="API" description="API calls for colors" />
+      <Heading title="API" description="Chamadas de API para cores" />
       <Separator />
       <ApiList entityIdName="colorId" entityName="colors" />
     </>

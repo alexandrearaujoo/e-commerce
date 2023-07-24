@@ -45,32 +45,32 @@ const CellAction = ({ product }: CellActionProps) => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button variant="ghost" className="h-8 w-8 p-0">
-            <span className="sr-only">Open menu</span>
+            <span className="sr-only">Abrir menu</span>
             <MoreHorizontal className="h-4 w-4" />
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
-          <DropdownMenuLabel>Actions</DropdownMenuLabel>
+          <DropdownMenuLabel>Ações</DropdownMenuLabel>
           <DropdownMenuItem
             onClick={() => onCopy(product.id)}
             className="cursor-pointer"
           >
             <Copy className="mr-2 h-4 w-4" />
-            Copy ID
+            Copiar ID
           </DropdownMenuItem>
           <DropdownMenuItem
             className="cursor-pointer"
             onClick={() => router.push(`/${storeId}/products/${product.id}`)}
           >
             <Edit className="mr-2 h-4 w-4" />
-            Update
+            Atualizar
           </DropdownMenuItem>
           <DropdownMenuItem
             onClick={() => setOpen(true)}
             className="cursor-pointer"
           >
             <Trash className="mr-2 h-4 w-4" />
-            Delete
+            Deletar
           </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>

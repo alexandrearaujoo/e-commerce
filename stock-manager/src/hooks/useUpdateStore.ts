@@ -31,13 +31,16 @@ export const useUpdateStore = (initialValues: Store) => {
   const onSubmit = async (data: UpdateStoreRequest) => {
     try {
       await axios.patch(`/api/stores/${params.storeId}`, data);
-      router.refresh();
-      toast.success('Store updated successfully!');
+
+      toast.success('Loja atualizada com sucesso!');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado');
+    } finally {
+      router.refresh();
     }
   };
 
@@ -45,14 +48,18 @@ export const useUpdateStore = (initialValues: Store) => {
     try {
       setLoading(true);
       await axios.delete(`/api/stores/${params.storeId}`);
-      router.refresh();
+
       router.push('/');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Make sure you removed all products and categories first!');
+      toast.error(
+        'Certifique-se de remover todos os produtos e categorias primeiro!'
+      );
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

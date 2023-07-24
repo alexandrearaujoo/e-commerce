@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 
 import Header from '@/components/header';
 
-import { getStore } from '@/services/getStore';
+import { getStore } from '@/services/stores';
 import { auth } from '@clerk/nextjs';
 
 export default async function DashboardLayout({

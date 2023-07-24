@@ -1,6 +1,6 @@
 import SizeClient from './components/client';
 
-import { getSizes } from '@/services/getSizes';
+import { getSizes } from '@/services/sizes';
 import { format } from 'date-fns';
 
 export default async function SizePage({

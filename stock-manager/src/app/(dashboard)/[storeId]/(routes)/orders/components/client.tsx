@@ -8,8 +8,8 @@ const OrderClient = ({ orders }: { orders: OrderColumn[] }) => {
   return (
     <>
       <Heading
-        description="Manage orders for your store"
-        title={`Orders ${orders.length}`}
+        description="Gerencie os pedidos da sua loja"
+        title={`Pedidos - ${orders.length}`}
       />
       <Separator />
       <DataTable columns={columns} data={orders} searchKey="products" />

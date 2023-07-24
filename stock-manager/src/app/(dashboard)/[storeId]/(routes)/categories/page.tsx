@@ -1,6 +1,6 @@
 import CategoryClient from './components/client';
 
-import { getCategories } from '@/services/getCategories';
+import { getCategories } from '@/services/categories';
 import { format } from 'date-fns';
 
 export default async function CategoriesPage({

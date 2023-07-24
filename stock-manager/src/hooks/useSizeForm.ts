@@ -22,11 +22,15 @@ export const useSizeForm = (initialValues: Size | null) => {
 
   const [open, setOpen] = useState(false);
 
-  const title = initialValues ? 'Edit size' : 'Create size';
-  const description = initialValues ? 'Edit a size' : 'Add a new size';
-  const toastMessage = initialValues ? 'Size updated!' : 'Size created!';
+  const title = initialValues ? 'Editar tamanho' : 'Criar tamanho';
+  const description = initialValues
+    ? 'Editar um tamanho'
+    : 'Adicionar um novo tamanho';
+  const toastMessage = initialValues
+    ? 'Tamanho atualizado!'
+    : 'Tamanho criado!';
 
-  const action = initialValues ? 'Save changes' : 'Create';
+  const action = initialValues ? 'Salvar mudanças' : 'Criar';
 
   const {
     handleSubmit,
@@ -44,14 +48,17 @@ export const useSizeForm = (initialValues: Size | null) => {
       } else {
         await axios.post(`/api/${params.storeId}/sizes`, data);
       }
-      router.refresh();
+
       router.push(`/${params.storeId}/sizes`);
       toast.success(toastMessage);
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Something went wrong');
+      toast.error('Algo deu errado!');
+    } finally {
+      router.refresh();
     }
   };
 
@@ -61,13 +68,17 @@ export const useSizeForm = (initialValues: Size | null) => {
       await axios.delete(`/api/${params.storeId}/sizes/${params.sizeId}`);
       router.refresh();
       router.push(`/${params.storeId}/sizes`);
-      toast.success('Size deleted!');
+      toast.success('Tamanho deletado!');
     } catch (error) {
       if (error instanceof AxiosError) {
         toast.error(error.response?.data.message);
+        return;
       }
-      toast.error('Make sure you removed all products using this sizes first!');
+      toast.error(
+        'Certifique-se de remover todos os produtos usando esses tamanhos primeiro!'
+      );
     } finally {
+      router.refresh();
       setLoading(false);
       setOpen(false);
     }

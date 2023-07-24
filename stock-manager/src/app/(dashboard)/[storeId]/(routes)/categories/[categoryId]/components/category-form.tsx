@@ -83,11 +83,11 @@ const CategoryForm = ({ initialValues, billboards }: CategoryFormProps) => {
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Nome</FormLabel>
                   <FormControl>
                     <Input
                       disabled={isSubmitting}
-                      placeholder="Category name"
+                      placeholder="Nome da categoria"
                       {...field}
                     />
                   </FormControl>
@@ -100,7 +100,7 @@ const CategoryForm = ({ initialValues, billboards }: CategoryFormProps) => {
               name="billboardId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Billboard</FormLabel>
+                  <FormLabel>Painel</FormLabel>
                   <FormControl>
                     <Select
                       disabled={isSubmitting}
@@ -112,7 +112,7 @@ const CategoryForm = ({ initialValues, billboards }: CategoryFormProps) => {
                         <SelectTrigger>
                           <SelectValue
                             defaultValue={field.value}
-                            placeholder="Select a billboard..."
+                            placeholder="Selecione um painel"
                           />
                         </SelectTrigger>
                       </FormControl>

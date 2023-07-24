@@ -31,7 +31,7 @@ const ApiAlert = ({
 }: ApiAlertProps) => {
   const onCopy = () => {
     navigator.clipboard.writeText(description);
-    toast.success('API Route copied!');
+    toast.success('Rota da API copiada!');
   };
 
   return (
