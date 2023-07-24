@@ -1,7 +1,13 @@
+import { Metadata } from 'next';
+
 import ColorClient from './components/client';
 
 import { getColors } from '@/services/colors';
 import { format } from 'date-fns';
+
+export const metadata: Metadata = {
+  title: 'Cores'
+};
 
 export default async function ColorsPage({
   params

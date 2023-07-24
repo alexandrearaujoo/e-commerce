@@ -1,9 +1,14 @@
+import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
 import SettingsForm from './components/settings-form';
 
 import { getStore } from '@/services/stores';
 import { auth } from '@clerk/nextjs';
+
+export const metadata: Metadata = {
+  title: 'Configurações'
+};
 
 export default async function SettingsPage({
   params

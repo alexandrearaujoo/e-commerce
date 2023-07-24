@@ -1,7 +1,13 @@
+import { Metadata } from 'next';
+
 import CategoryClient from './components/client';
 
 import { getCategories } from '@/services/categories';
 import { format } from 'date-fns';
+
+export const metadata: Metadata = {
+  title: 'Categorias'
+};
 
 export default async function CategoriesPage({
   params

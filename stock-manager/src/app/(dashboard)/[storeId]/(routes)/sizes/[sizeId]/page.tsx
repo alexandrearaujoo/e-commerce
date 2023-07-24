@@ -2,6 +2,22 @@ import SizeForm from './components/size-form';
 
 import { getSize } from '@/services/sizes';
 
+export async function generateMetadata({
+  params
+}: {
+  params: { sizeId: string };
+}) {
+  const { sizeId } = params;
+
+  const size = await getSize({ sizeId });
+
+  const title = size?.name ? 'Editar tamanho' : 'Criar tamanho';
+
+  return {
+    title
+  };
+}
+
 export default async function SizePage({
   params
 }: {

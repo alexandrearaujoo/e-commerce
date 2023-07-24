@@ -1,6 +1,12 @@
+import { Metadata } from 'next';
+
 import OrderClient from './components/client';
 
 import { getOrders } from '@/services/orders';
+
+export const metadata: Metadata = {
+  title: 'Pedidos'
+};
 
 export default async function OrderPage({
   params

@@ -13,17 +13,10 @@ import {
 } from '@/components/ui/form';
 import Heading from '@/components/ui/heading';
 import { Input } from '@/components/ui/input';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue
-} from '@/components/ui/select';
 import { Separator } from '@/components/ui/separator';
 
 import { useCategoryForm } from '@/hooks/useCategoryForm';
-import { Billboard, Category } from '@prisma/client';
+import { Category } from '@prisma/client';
 import { Trash } from 'lucide-react';
 
 const AlertModal = dynamic(() => import('@/components/modals/alert-modal'), {
@@ -32,10 +25,9 @@ const AlertModal = dynamic(() => import('@/components/modals/alert-modal'), {
 
 interface CategoryFormProps {
   initialValues: Category | null;
-  billboards: Billboard[];
 }
 
-const CategoryForm = ({ initialValues, billboards }: CategoryFormProps) => {
+const CategoryForm = ({ initialValues }: CategoryFormProps) => {
   const {
     handleSubmit,
     onSubmit,
@@ -90,40 +82,6 @@ const CategoryForm = ({ initialValues, billboards }: CategoryFormProps) => {
                       placeholder="Nome da categoria"
                       {...field}
                     />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={control}
-              name="billboardId"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Painel</FormLabel>
-                  <FormControl>
-                    <Select
-                      disabled={isSubmitting}
-                      onValueChange={field.onChange}
-                      value={field.value}
-                      defaultValue={field.value}
-                    >
-                      <FormControl>
-                        <SelectTrigger>
-                          <SelectValue
-                            defaultValue={field.value}
-                            placeholder="Selecione um painel"
-                          />
-                        </SelectTrigger>
-                      </FormControl>
-                      <SelectContent>
-                        {billboards.map((billboard) => (
-                          <SelectItem key={billboard.id} value={billboard.id}>
-                            {billboard.label}
-                          </SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
                   </FormControl>
                   <FormMessage />
                 </FormItem>

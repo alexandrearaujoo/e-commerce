@@ -1,9 +1,25 @@
 import ProductForm from './components/product-form';
 
+import { getCategories } from '@/services/categories';
 import { getColors } from '@/services/colors';
-import { getCategories } from '@/services/getCategories';
-import { getSizes } from '@/services/getSizes';
 import { getProduct } from '@/services/products';
+import { getSizes } from '@/services/sizes';
+
+export async function generateMetadata({
+  params
+}: {
+  params: { productId: string };
+}) {
+  const { productId } = params;
+
+  const product = await getProduct({ productId });
+
+  const title = product?.name ? 'Editar produto' : 'Criar produto';
+
+  return {
+    title
+  };
+}
 
 export default async function ProductPage({
   params

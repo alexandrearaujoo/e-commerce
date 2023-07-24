@@ -2,6 +2,22 @@ import ColorForm from './components/color-form';
 
 import { getColor } from '@/services/colors';
 
+export async function generateMetadata({
+  params
+}: {
+  params: { colorId: string };
+}) {
+  const { colorId } = params;
+
+  const color = await getColor({ colorId });
+
+  const title = color?.name ? 'Editar cor' : 'Criar cor';
+
+  return {
+    title
+  };
+}
+
 export default async function SizePage({
   params
 }: {

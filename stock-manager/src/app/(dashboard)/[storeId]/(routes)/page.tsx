@@ -8,7 +8,24 @@ import { getGraphRevenue } from '@/services/getGraphRevenue';
 import { getSalesCount } from '@/services/getSalesCount';
 import { getStockCount } from '@/services/getStockCount';
 import { getTotalRevenue } from '@/services/getTotalRevenue';
+import { getStore } from '@/services/stores';
 import { CreditCard, DollarSign, Package } from 'lucide-react';
+
+export async function generateMetadata({
+  params
+}: {
+  params: { storeId: string };
+}) {
+  const { storeId } = params;
+
+  const store = await getStore({ id: storeId });
+
+  const title = store?.name ? `${store.name} - Dashboard` : 'Dashboard';
+
+  return {
+    title
+  };
+}
 
 export default async function DashboardPage({
   params

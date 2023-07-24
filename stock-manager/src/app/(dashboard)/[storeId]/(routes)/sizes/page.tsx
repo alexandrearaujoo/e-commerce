@@ -1,7 +1,13 @@
+import { Metadata } from 'next';
+
 import SizeClient from './components/client';
 
 import { getSizes } from '@/services/sizes';
 import { format } from 'date-fns';
+
+export const metadata: Metadata = {
+  title: 'Tamanhos'
+};
 
 export default async function SizePage({
   params

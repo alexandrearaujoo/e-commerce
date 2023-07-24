@@ -1,6 +1,12 @@
+import { Metadata } from 'next';
+
 import ProductClient from './components/client';
 
 import { getProducts } from '@/services/products';
+
+export const metadata: Metadata = {
+  title: 'Produtos'
+};
 
 export default async function ProductPage({
   params
